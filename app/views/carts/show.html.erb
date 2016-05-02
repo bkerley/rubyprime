@@ -5,5 +5,28 @@
   <%= @cart.shipping %>
 </p>
 
+<table>
+	<thead>
+		<tr>
+			<th>product name</th>
+			<th>quantity</th>
+			<th>per-unit cost</th>
+			<th>line total cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cart.cart_products.each do |cp| %>
+		  <tr>
+		  	<td><%= cp.product.name %></td>
+		  	<td><%= cp.quantity %></td>
+		  	<td><%= cp.product.price %></td>
+		  	<td>
+		  		<%= cp.quantity * cp.product.price %>
+	  		</td>
+	  	</tr>
+		<% end %>
+	</tbody>
+</table>
+
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
