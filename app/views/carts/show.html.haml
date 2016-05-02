@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Shipping:
+  = @cart.shipping
+%table
+  %thead
+    %tr
+      %th product name
+      %th quantity
+      %th per-unit cost
+      %th line total cost
+  %tbody
+    - @cart.cart_products.each do |cp|
+      %tr
+        %td= cp.product.name
+        %td= cp.quantity
+        %td= cp.product.price
+        %td
+          = cp.quantity * cp.product.price
+= link_to 'Edit', edit_cart_path(@cart)
+|
+= link_to 'Back', carts_path
